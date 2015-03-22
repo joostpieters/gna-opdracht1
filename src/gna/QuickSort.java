@@ -38,9 +38,9 @@ public class QuickSort extends SortingAlgorithm{
             while (array[++i].compareTo(v) < 0) if (i == hi) break;
             while (v.compareTo(array[--j]) < 0) if (j == lo) break;
             if(i >= j) break;
-            exch(a,i,j);
+            exch(array,i,j);
         }
-        exch(a,lo,j);
+        exch(array,lo,j);
         return j;
     }
 
@@ -58,10 +58,12 @@ public class QuickSort extends SortingAlgorithm{
         }
     }
 
-    private static Comparable exch(Comparable array, int i, int j){
+    private static Comparable[] exch(Comparable[] array, int i, int j){
         Comparable temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+
+        return array;
     }
 	/**
 	 * Constructor.
