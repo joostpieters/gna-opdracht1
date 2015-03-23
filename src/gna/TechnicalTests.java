@@ -114,37 +114,5 @@ public class TechnicalTests {
 	}
 
 
-    /*
-    test
-     */
-	@Test
-    public void testSelectionSort(){
-        Integer[] a = {1,10,100,1000,10000,100000,1000000,10000000,0};
-        Comparable[] array = a.clone();
-        Comparable[] coCorrect = a;
-        Arrays.sort(coCorrect);
-        selectionSort.sort(array);
-        assertArrayEquals(array,coCorrect);
-    }
-
-    @Test
-    public void testInsertionSort(){
-        Integer[] a = {1,10,100,1000,10000,100000,1000000,10000000,0};
-        Comparable[] array = a.clone();
-        Comparable[] coCorrect = a;
-        Arrays.sort(coCorrect);
-        insertionSort.sort(array);
-        assertArrayEquals(array,coCorrect);
-    }
-    @Test
-    public void testQuickSort(){
-        Integer[] a = {1,10,100,1000,10000,100000,1000000,10000000,0};
-        Comparable[] array = a.clone();
-        Comparable[] coCorrect = a;
-        Arrays.sort(coCorrect);
-        quickSort.sort(array);
-        assertArrayEquals(array,coCorrect);
-    }
-
 
 }
