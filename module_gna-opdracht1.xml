@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gna-opdracht1" default="compile.module.gna-opdracht1">
+  <dirname property="module.gna-opdracht1.basedir" file="${ant.file.module_gna-opdracht1}"/>
+  
+  <property name="module.jdk.home.gna-opdracht1" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gna-opdracht1" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gna-opdracht1" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gna-opdracht1" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="gna-opdracht1.output.dir" value="${module.gna-opdracht1.basedir}/out/production/gna-opdracht1"/>
+  <property name="gna-opdracht1.testoutput.dir" value="${module.gna-opdracht1.basedir}/out/test/gna-opdracht1"/>
+  
+  <path id="gna-opdracht1.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gna-opdracht1.module.production.classpath">
+    <path refid="${module.jdk.classpath.gna-opdracht1}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="gna-opdracht1.runtime.production.module.classpath">
+    <pathelement location="${gna-opdracht1.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="gna-opdracht1.module.classpath">
+    <path refid="${module.jdk.classpath.gna-opdracht1}"/>
+    <pathelement location="${gna-opdracht1.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="gna-opdracht1.runtime.module.classpath">
+    <pathelement location="${gna-opdracht1.testoutput.dir}"/>
+    <pathelement location="${gna-opdracht1.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gna-opdracht1">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gna-opdracht1">
+    <patternset refid="excluded.from.module.gna-opdracht1"/>
+  </patternset>
+  
+  <path id="gna-opdracht1.module.sourcepath">
+    <dirset dir="${module.gna-opdracht1.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.gna-opdracht1" depends="compile.module.gna-opdracht1.production,compile.module.gna-opdracht1.tests" description="Compile module gna-opdracht1"/>
+  
+  <target name="compile.module.gna-opdracht1.production" depends="register.custom.compilers" description="Compile module gna-opdracht1; production classes">
+    <mkdir dir="${gna-opdracht1.output.dir}"/>
+    <javac2 destdir="${gna-opdracht1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.gna-opdracht1}/javac">
+      <compilerarg line="${compiler.args.gna-opdracht1}"/>
+      <bootclasspath refid="gna-opdracht1.module.bootclasspath"/>
+      <classpath refid="gna-opdracht1.module.production.classpath"/>
+      <src refid="gna-opdracht1.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.gna-opdracht1"/>
+    </javac2>
+    
+    <copy todir="${gna-opdracht1.output.dir}">
+      <fileset dir="${module.gna-opdracht1.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.gna-opdracht1.tests" depends="register.custom.compilers,compile.module.gna-opdracht1.production" description="compile module gna-opdracht1; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gna-opdracht1" description="cleanup module">
+    <delete dir="${gna-opdracht1.output.dir}"/>
+    <delete dir="${gna-opdracht1.testoutput.dir}"/>
+  </target>
+</project>

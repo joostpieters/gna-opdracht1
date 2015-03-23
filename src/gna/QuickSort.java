@@ -47,9 +47,10 @@ public class QuickSort extends SortingAlgorithm{
                 if (j == lo) break;
             }
             lCounter++;
-            if(i >= j) break;{
-                exch(array,i,j);
-            }
+            if(i >= j) break;
+
+            exch(array,i,j);
+
         }
         exch(array,lo,j);
         return j;

@@ -31,12 +31,11 @@ public class SelectionSort extends SortingAlgorithm {
         return lCounter;
 	}
 
-    private static Comparable[] exch(Comparable[] array, int i, int j){
+    private static void exch(Comparable[] array, int i, int j){
         Comparable temp = array[i];
         array[i] = array[j];
         array[j] = temp;
 
-        return array;
     }
 	/**
 	 * Constructor.
